@@ -1,0 +1,2712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osmos.ai &times; Bhanu Kumar &middot; Strategic Product Marketing Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root {
+  --bg: #080A12;
+  --bg-subtle: #0D111D;
+  --surface: #121727;
+  --surface-hover: #182035;
+  --surface-card: #0F1424;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-focus: rgba(99, 108, 255, 0.4);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  --osmos-purple: #636CFF;
+  --osmos-purple-glow: rgba(99, 108, 255, 0.22);
+  --osmos-purple-dim: rgba(99, 108, 255, 0.10);
+
+  --emerald-accent: #00E599;
+  --emerald-glow: rgba(0, 229, 153, 0.22);
+  --emerald-dim: rgba(0, 229, 153, 0.10);
+
+  --cyan-accent: #06B6D4;
+  --cyan-dim: rgba(6, 182, 212, 0.10);
+
+  --amber-accent: #F59E0B;
+  --amber-dim: rgba(245, 158, 11, 0.10);
+
+  --red-accent: #EF4444;
+  --red-dim: rgba(239, 68, 68, 0.10);
+
+  --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 16px 44px -8px rgba(0, 0, 0, 0.65);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 74px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(900px 520px at 15% -8%, rgba(99, 108, 255, 0.08), transparent 70%),
+    radial-gradient(850px 480px at 85% 15%, rgba(0, 229, 153, 0.05), transparent 65%),
+    radial-gradient(1000px 600px at 50% 95%, rgba(99, 108, 255, 0.05), transparent 75%);
+}
+
+::selection {
+  background: var(--osmos-purple-dim);
+  color: #A5B4FC;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* TOP PROGRESS BAR */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--osmos-purple), var(--emerald-accent));
+  z-index: 999;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* NAVIGATION - AGGRESSIVELY SIMPLIFIED */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: rgba(8, 10, 18, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  height: 62px;
+  width: 100%;
+}
+
+.nav-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.brand-logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+}
+
+.brand-symbol {
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, var(--osmos-purple), var(--emerald-accent));
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-symbol svg {
+  width: 11px;
+  height: 11px;
+  fill: #FFFFFF;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.collab-tag {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.collab-name {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+  flex-shrink: 0;
+}
+
+.nav-link {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pill-btn:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.pill-btn.primary {
+  background: var(--osmos-purple);
+  color: #FFFFFF;
+  border-color: var(--osmos-purple);
+}
+
+.pill-btn.primary:hover {
+  background: #5058f5;
+  box-shadow: 0 4px 14px var(--osmos-purple-glow);
+}
+
+/* MAIN LAYOUT */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* HERO SECTION - REFINED STRATEGIC PMM POV */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section {
+  padding: 52px 0 20px;
+}
+
+.hero-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #A5B4FC;
+  background: var(--osmos-purple-dim);
+  border: 1px solid rgba(99, 108, 255, 0.25);
+  padding: 4px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: heroFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: 46px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  max-width: 960px;
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.hero-subtitle {
+  font-size: 21px;
+  line-height: 1.45;
+  font-weight: 450;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  max-width: 860px;
+  animation: heroFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+}
+
+/* THESIS CARD - CRISP, AUTHORITATIVE & UNCLUTTERED */
+.thesis-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--osmos-purple);
+  border-radius: 12px;
+  padding: 26px 30px;
+  margin-bottom: 32px;
+  max-width: 960px;
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
+}
+
+.thesis-lead-label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--osmos-purple);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.thesis-statement {
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 22px;
+}
+
+.thesis-positioning-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(99, 108, 255, 0.08);
+  border: 1px solid rgba(99, 108, 255, 0.28);
+  border-radius: 8px;
+  font-size: 14.5px;
+  color: var(--text-primary);
+}
+
+.positioning-arrow {
+  color: var(--osmos-purple);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.positioning-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.positioning-val {
+  color: #A5B4FC;
+  font-weight: 700;
+}
+
+.thesis-triad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.triad-item {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.triad-label {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+/* STRATEGIC DIVIDER */
+.section-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 44px 0 48px;
+}
+
+/* INTERACTIVE CONCEPT SECTION */
+.concept-header {
+  margin-bottom: 22px;
+}
+
+.concept-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--emerald-accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.concept-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.concept-lead {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 820px;
+  margin-bottom: 18px;
+}
+
+/* SIMULATOR INTERACTIVE DEMO GUIDE */
+.simulator-demo-guide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(99, 108, 255, 0.08);
+  border: 1px solid rgba(99, 108, 255, 0.28);
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.demo-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.demo-radar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald-accent);
+  box-shadow: 0 0 0 0 rgba(0, 229, 153, 0.6);
+  animation: radarPulse 2s infinite;
+}
+
+@keyframes radarPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 229, 153, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(0, 229, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 229, 153, 0); }
+}
+
+.demo-badge {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--emerald-accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.demo-instruction {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  flex-grow: 1;
+}
+
+.demo-instruction strong {
+  color: var(--text-primary);
+}
+
+.demo-replay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-secondary);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 5px 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.demo-replay-btn:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  border-color: var(--osmos-purple);
+}
+
+.sim-focus-pulse {
+  outline: 2px solid var(--osmos-purple) !important;
+  box-shadow: 0 0 16px rgba(99, 108, 255, 0.45) !important;
+  transition: all 0.25s ease;
+}
+
+/* METHODOLOGY CALLOUT IN SIMULATOR */
+.sim-methodology-box {
+  padding: 11px 15px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 12px;
+}
+
+.methodology-label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.methodology-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* CLIENT LOGO STRIP */
+.trust-strip {
+  padding-top: 8px;
+}
+
+.trust-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.client-pills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.client-tag {
+  padding: 6px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.client-tag:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.client-tag span.badge-country {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+}
+
+/* SECTION UTILITIES */
+.section-block {
+  margin-bottom: 72px;
+}
+
+.section-head {
+  margin-bottom: 24px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--osmos-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.section-lead {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 820px;
+}
+
+/* SECTION 1: THE PLATEAU BREAKDOWN */
+.plateau-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.card-pillar {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pillar-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--osmos-purple-dim);
+  border: 1px solid rgba(99, 108, 255, 0.25);
+  color: #A5B4FC;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14.5px;
+}
+
+.pillar-icon-box.red {
+  background: var(--red-dim);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: var(--red-accent);
+}
+
+.pillar-icon-box.green {
+  background: var(--emerald-dim);
+  border-color: rgba(0, 229, 153, 0.25);
+  color: var(--emerald-accent);
+}
+
+.pillar-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pillar-desc {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.pillar-impact-pill {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pillar-impact-pill.red {
+  background: var(--red-dim);
+  color: var(--red-accent);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.pillar-impact-pill.green {
+  background: var(--emerald-dim);
+  color: var(--emerald-accent);
+  border: 1px solid rgba(0, 229, 153, 0.25);
+}
+
+.pillar-impact-pill.purple {
+  background: var(--osmos-purple-dim);
+  color: #A5B4FC;
+  border: 1px solid rgba(99, 108, 255, 0.25);
+}
+
+.validation-action-pill {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #A5B4FC;
+  background: var(--osmos-purple-dim);
+  border: 1px solid rgba(99, 108, 255, 0.25);
+  padding: 4px 10px;
+  border-radius: 5px;
+  margin-top: auto;
+}
+
+.gtm-impact-pill {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--emerald-accent);
+  background: var(--emerald-dim);
+  border: 1px solid rgba(0, 229, 153, 0.25);
+  padding: 4px 10px;
+  border-radius: 5px;
+  margin-top: auto;
+}
+
+/* WATERFALL GRAPHIC */
+.waterfall-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.waterfall-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.waterfall-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.waterfall-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-color {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+.waterfall-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.step-card {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.step-pct {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.step-pct.green {
+  color: var(--emerald-accent);
+}
+
+.step-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.step-detail {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* SECTION 2: THE BUSINESS CASE / YIELD SIMULATOR */
+.simulator-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.sim-header {
+  padding: 14px 22px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sim-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--emerald-accent);
+}
+
+.sim-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sim-concept-tag {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 2px 9px;
+  border-radius: 4px;
+  background: var(--osmos-purple-dim);
+  color: #A5B4FC;
+  border: 1px solid rgba(99, 108, 255, 0.25);
+}
+
+.sim-body {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  min-height: 310px;
+}
+
+.sim-controls {
+  padding: 22px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sim-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sim-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sim-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sim-value-tag {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--osmos-purple);
+}
+
+.tier-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.tier-btn {
+  padding: 8px 6px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tier-btn:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.tier-btn.active {
+  background: var(--osmos-purple-dim);
+  border-color: var(--osmos-purple);
+  color: #FFFFFF;
+}
+
+.channels-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.channel-card {
+  padding: 10px 12px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.channel-card:hover {
+  background: var(--surface-hover);
+}
+
+.channel-card.active {
+  background: rgba(99, 108, 255, 0.07);
+  border-color: rgba(99, 108, 255, 0.4);
+}
+
+.channel-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1.5px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.channel-card.active .channel-checkbox {
+  background: var(--osmos-purple);
+  border-color: var(--osmos-purple);
+}
+
+.channel-card.active .channel-checkbox svg {
+  display: block;
+}
+
+.channel-checkbox svg {
+  display: none;
+  width: 10px;
+  height: 10px;
+  fill: #FFFFFF;
+}
+
+.channel-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.channel-meta {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.sim-output {
+  padding: 22px;
+  background: rgba(13, 17, 29, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.output-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.metric-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.metric-box.highlight {
+  border-color: rgba(0, 229, 153, 0.35);
+  background: rgba(0, 229, 153, 0.04);
+}
+
+.metric-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.metric-val {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.metric-box.highlight .metric-val {
+  color: var(--emerald-accent);
+}
+
+.metric-sub {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.sim-telemetry-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.telemetry-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--emerald-accent);
+  flex-shrink: 0;
+}
+
+.telemetry-text strong {
+  color: var(--emerald-accent);
+}
+
+.sim-disclaimer {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* SECTION 3: POSITIONING REFRAME */
+.diff-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.diff-card {
+  border-radius: 10px;
+  padding: 22px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+}
+
+.diff-card.before {
+  border-left: 3px solid var(--red-accent);
+}
+
+.diff-card.after {
+  border-left: 3px solid var(--emerald-accent);
+  background: rgba(0, 229, 153, 0.015);
+}
+
+.diff-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.diff-badge.red {
+  color: var(--red-accent);
+}
+
+.diff-badge.green {
+  color: var(--emerald-accent);
+}
+
+.diff-quote {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.diff-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.diff-item {
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.diff-icon {
+  flex-shrink: 0;
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+/* PERSONA SWITCHER */
+.persona-switcher-box {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+}
+
+.persona-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.persona-tab-btn {
+  padding: 7px 14px;
+  border-radius: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.persona-tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.persona-tab-btn.active {
+  background: var(--osmos-purple);
+  color: #FFFFFF;
+  border-color: var(--osmos-purple);
+}
+
+.persona-panel {
+  display: none;
+}
+
+.persona-panel.active {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.persona-aspect {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 14px;
+}
+
+.persona-aspect-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+
+.persona-aspect-body {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* SECTION 4: COMPETITIVE STRATEGY */
+.matrix-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.svg-quadrant-wrapper {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quadrant-svg {
+  width: 100%;
+  height: 310px;
+}
+
+.battlecards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.battlecard {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.battlecard-summary {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--text-primary);
+  background: var(--surface);
+}
+
+.battlecard-summary span.badge {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--osmos-purple-dim);
+  color: #A5B4FC;
+}
+
+.battlecard-content {
+  padding: 14px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13.5px;
+}
+
+.battle-play-row {
+  display: grid;
+  grid-template-columns: 75px 1fr;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.battle-tag {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.battle-tag.concede { color: var(--amber-accent); }
+.battle-tag.reframe { color: var(--osmos-purple); }
+.battle-tag.proof { color: var(--emerald-accent); }
+
+.battle-val {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* SECTION 5: CUSTOMER VALIDATION */
+.validation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.validation-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.validation-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.validation-num {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--emerald-accent);
+  padding: 2px 7px;
+  background: var(--emerald-dim);
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.validation-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.validation-question {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.validation-test {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.validation-test strong {
+  color: #A5B4FC;
+}
+
+/* SECTION 6: GTM ROADSHOW */
+.gtm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.gtm-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gtm-step-tag {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--osmos-purple);
+  padding: 2px 7px;
+  background: var(--osmos-purple-dim);
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.gtm-card-title {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.gtm-card-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.gtm-deliverable-box {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.gtm-deliverable-box strong {
+  color: var(--emerald-accent);
+}
+
+/* SECTION 7: MY FIRST 90 DAYS */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.timeline-col {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline-badge {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 5px;
+  background: var(--osmos-purple-dim);
+  color: #A5B4FC;
+  width: fit-content;
+}
+
+.timeline-phase {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.timeline-tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.task-bullet {
+  color: var(--emerald-accent);
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+/* METRICS TABLE */
+.metrics-table-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table-header {
+  padding: 12px 18px;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.metrics-grid-rows {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 16px 18px;
+  gap: 14px;
+}
+
+.kpi-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.kpi-title {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.kpi-target {
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--emerald-accent);
+}
+
+.kpi-desc {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+/* SECTION 8: OTHER RELEVANT WORK */
+.past-works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.past-work-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.past-work-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--osmos-purple);
+}
+
+.past-work-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.past-company {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.past-domain {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.past-problem {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.past-link {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--osmos-purple);
+}
+
+.past-link:hover {
+  color: #A5B4FC;
+}
+
+/* FINAL CTA FOOTER */
+footer {
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border);
+  padding: 44px 24px;
+  margin-top: 40px;
+}
+
+.footer-content {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.author-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.author-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.author-role {
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1024px) {
+  .sim-body {
+    grid-template-columns: 1fr;
+  }
+  .sim-controls {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .thesis-pillars,
+  .plateau-grid,
+  .diff-container,
+  .matrix-container,
+  .gtm-grid,
+  .validation-grid,
+  .timeline-grid,
+  .past-works-grid {
+    grid-template-columns: 1fr;
+  }
+  .persona-panel.active {
+    grid-template-columns: 1fr;
+  }
+  .metrics-grid-rows {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .waterfall-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .output-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 30px;
+  }
+  .nav-links {
+    display: none;
+  }
+  .channels-toggle-grid {
+    grid-template-columns: 1fr;
+  }
+  .metrics-grid-rows {
+    grid-template-columns: 1fr;
+  }
+  .waterfall-steps {
+    grid-template-columns: 1fr;
+  }
+  .output-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAVIGATION - CLEAN & RESTRAINED -->
+<nav>
+  <div class="nav-container">
+    <div class="brand-block">
+      <div class="brand-logo-badge">
+        <div class="brand-symbol">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="brand-name">Osmos.ai</span>
+      </div>
+      <span class="collab-tag">&times;</span>
+      <span class="collab-name">Bhanu Kumar</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#pov" class="nav-link">Thesis</a></li>
+      <li><a href="#plateau" class="nav-link">Diagnosis</a></li>
+      <li><a href="#simulator" class="nav-link">Yield Model</a></li>
+      <li><a href="#positioning" class="nav-link">Positioning</a></li>
+      <li><a href="#competition" class="nav-link">Competition</a></li>
+      <li><a href="#validation" class="nav-link">Validation</a></li>
+      <li><a href="#plan" class="nav-link">90-Day Plan</a></li>
+    </ul>
+
+    <div class="nav-cta-group">
+      <a href="https://drive.google.com/file/d/1a_WRIHF7RawD7rXkwYs3DNuPQf7zq_lf/view?usp=sharing" target="_blank" rel="noopener" class="pill-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Resume
+      </a>
+      <a href="mailto:bhanukumar0902@gmail.com" class="pill-btn primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO SECTION: CALM, SENIOR STRATEGIC PMM POV -->
+  <section class="hero-section" id="pov">
+    <div class="hero-eyebrow-pill">
+      PRODUCT MARKETING POV &middot; SEPTEMBER 2026
+    </div>
+
+    <h1 class="hero-title">
+      Breaking the 1% GMV Plateau
+    </h1>
+
+    <p class="hero-subtitle">
+      How I'd position Osmos as the Retail Media Operating System for omnichannel growth.
+    </p>
+
+    <div class="thesis-card">
+      <div class="thesis-lead-label">MY THESIS</div>
+      <p class="thesis-statement">
+        Retailers don't have a demand problem. They have an infrastructure problem. Legacy ad stacks make it difficult to scale media across onsite, offsite, and in-store channels while maintaining the commerce context that makes retail media valuable. As a result, many retail media networks struggle to scale beyond ~1% of GMV.
+      </p>
+      <div class="thesis-positioning-pill">
+        <span class="positioning-arrow">&rarr;</span>
+        <span class="positioning-label">Proposed positioning:</span>
+        <strong class="positioning-val">The Composable Retail Media OS</strong>
+      </div>
+      <div class="thesis-triad">
+        <div class="triad-item"><strong class="triad-label">Demand:</strong> Brands want measurable retail media.</div>
+        <div class="triad-item"><strong class="triad-label">Constraint:</strong> Legacy infrastructure fragments commerce signals.</div>
+        <div class="triad-item"><strong class="triad-label">Opportunity:</strong> Osmos can unify the stack across channels.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRATEGIC DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- SECTION 1: MARKET DIAGNOSIS -->
+  <section class="section-block" id="plateau">
+    <div class="section-head">
+      <div class="section-tag">Market Diagnosis</div>
+      <h2 class="section-heading">Why many retail media networks struggle to scale beyond ~1% of GMV: legacy ad tech treats commerce like publishing.</h2>
+      <p class="section-lead">
+        Publishing ad servers decouple ad decisions from live inventory, capping network margin.
+      </p>
+    </div>
+
+    <div class="plateau-grid">
+      <div class="card-pillar">
+        <div class="pillar-icon-box red">01</div>
+        <span class="pillar-impact-pill red">Out-of-Stock Ad Waste</span>
+        <h3 class="pillar-title">Commerce Blindspots</h3>
+        <p class="pillar-desc">
+          Publishing ad servers bid on keywords, serving ads on <strong>out-of-stock items</strong> and burning brand spend.
+        </p>
+      </div>
+
+      <div class="card-pillar">
+        <div class="pillar-icon-box red">02</div>
+        <span class="pillar-impact-pill red">Capped CPG Budgets</span>
+        <h3 class="pillar-title">Fragmented Channel Silos</h3>
+        <p class="pillar-desc">
+          Disconnected onsite, offsite, and in-store tools prevent brands from verifying <strong>closed-loop cross-channel attribution</strong>.
+        </p>
+      </div>
+
+      <div class="card-pillar">
+        <div class="pillar-icon-box green">03</div>
+        <span class="pillar-impact-pill green">4-Week Modular Rollout</span>
+        <h3 class="pillar-title">Replatforming Fatigue</h3>
+        <p class="pillar-desc">
+          Osmos composably overlays existing commerce stacks, unlocking <strong>omnichannel monetization</strong> without 18-month engineering rebuilds.
+        </p>
+      </div>
+    </div>
+
+    <!-- WATERFALL REVENUE POTENTIAL -->
+    <div class="waterfall-box">
+      <div class="waterfall-header">
+        <div class="waterfall-title">The Osmos Margin Expansion Progression (% of Total Retail GMV)</div>
+        <div class="waterfall-legend">
+          <div class="legend-item"><div class="legend-color" style="background:#EF4444"></div> Plateau State</div>
+          <div class="legend-item"><div class="legend-color" style="background:#636CFF"></div> Onsite Optimization</div>
+          <div class="legend-item"><div class="legend-color" style="background:#00E599"></div> Omnichannel + AI Yield</div>
+        </div>
+      </div>
+
+      <div class="waterfall-steps">
+        <div class="step-card">
+          <span class="step-pct" style="color:#EF4444">0.6% GMV</span>
+          <span class="step-label">Legacy Baseline</span>
+          <p class="step-detail">Manual IOs and keyword banners.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-pct" style="color:#A5B4FC">2.1% GMV</span>
+          <span class="step-label">Onsite Self-Serve</span>
+          <p class="step-detail">Sub-20ms search with live stock sync.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-pct" style="color:#636CFF">4.5% GMV</span>
+          <span class="step-label">Omnichannel Suite</span>
+          <p class="step-detail">Offsite DSP and verified in-store screens.</p>
+        </div>
+
+        <div class="step-card" style="border-color: rgba(0, 229, 153, 0.35); background: rgba(0, 229, 153, 0.03);">
+          <span class="step-pct green">up to 7.0% GMV</span>
+          <span class="step-label">Autonomous Yield</span>
+          <p class="step-detail">Sofie AI real-time budget optimization.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPANY CONTEXT: ENTERPRISE PRODUCTION FOOTPRINT -->
+    <div class="company-context-box" style="margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--border);">
+      <div class="section-tag" style="margin-bottom: 6px;">Company Context</div>
+      <h3 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">Enterprise Production Footprint Across 11 Countries</h3>
+      <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 14px; line-height: 1.5;">
+        Demonstrated at scale across high-concurrency e-commerce, grocery, quick-commerce, and pharmacy networks.
+      </p>
+      <div class="client-pills">
+        <div class="client-tag">bigbasket <span class="badge-country">Tata</span></div>
+        <div class="client-tag">Tata 1mg <span class="badge-country">Health</span></div>
+        <div class="client-tag">AJIO <span class="badge-country">Fashion</span></div>
+        <div class="client-tag">Apollo 24|7 <span class="badge-country">Pharmacy</span></div>
+        <div class="client-tag">FairPrice Group <span class="badge-country">Singapore</span></div>
+        <div class="client-tag">Wakefern Food Corp <span class="badge-country">USA</span></div>
+        <div class="client-tag">Pick n Pay <span class="badge-country">South Africa</span></div>
+        <div class="client-tag">Takealot.com <span class="badge-country">E-Commerce</span></div>
+        <div class="client-tag">Rapido <span class="badge-country">Logistics</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: OPPORTUNITY & ECONOMIC MODEL (YIELD SIMULATOR) -->
+  <section class="section-block" id="simulator">
+    <div class="concept-header">
+      <div class="concept-tag">Opportunity & Economic Model</div>
+      <h2 class="concept-title">Interactive Concept: Retail Media Yield Simulator</h2>
+      <p class="concept-lead">
+        Directional scenario model demonstrating EBITDA margin expansion beyond legacy baselines.
+      </p>
+
+      <!-- GUIDED INTERACTION DEMO BAR -->
+      <div class="simulator-demo-guide" id="simDemoGuide">
+        <div class="demo-indicator">
+          <span class="demo-radar-dot"></span>
+          <span class="demo-badge">LIVE SCENARIO ENGINE</span>
+        </div>
+        <span class="demo-instruction" id="demoInstruction">Click any GMV scale or omnichannel toggle to simulate incremental EBITDA margin yield.</span>
+        <button class="demo-replay-btn" id="demoReplayBtn" onclick="runSimulatorDemo(true)" title="Run interactive scenario walkthrough">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Guided Demo
+        </button>
+      </div>
+    </div>
+
+    <div class="simulator-card">
+      <div class="sim-header">
+        <div class="sim-status">
+          <span class="sim-title">INTERACTIVE CONCEPT &middot; RETAIL MEDIA YIELD SIMULATOR</span>
+        </div>
+        <div class="sim-concept-tag">
+          Directional Scenario Model &middot; PMM Economics
+        </div>
+      </div>
+
+      <div class="sim-body">
+        <div class="sim-controls">
+          <div class="sim-control-group">
+            <div class="sim-label-row">
+              <span class="sim-label">1. Select Retailer GMV Scale</span>
+              <span class="sim-value-tag" id="gmvTag">$1.5 Billion Annual GMV</span>
+            </div>
+            <div class="tier-selector">
+              <button class="tier-btn" data-gmv="500" onclick="setGmv(500, this)">$500M (Mid-Tier)</button>
+              <button class="tier-btn active" data-gmv="1500" onclick="setGmv(1500, this)">$1.5B (Tier 1)</button>
+              <button class="tier-btn" data-gmv="5000" onclick="setGmv(5000, this)">$5.0B (Global)</button>
+            </div>
+          </div>
+
+          <div class="sim-control-group">
+            <div class="sim-label-row">
+              <span class="sim-label">2. Activate Modular Osmos Channels</span>
+              <span class="sim-value-tag" id="channelCount">4 Active</span>
+            </div>
+            <div class="channels-toggle-grid">
+              <div class="channel-card active" id="ch-onsite" onclick="toggleChannel('onsite')">
+                <div class="channel-checkbox">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="channel-text">
+                  <span class="channel-name">Onsite Search & Display</span>
+                  <span class="channel-meta">Sponsored SKU & Video</span>
+                </div>
+              </div>
+
+              <div class="channel-card active" id="ch-offsite" onclick="toggleChannel('offsite')">
+                <div class="channel-checkbox">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="channel-text">
+                  <span class="channel-name">Offsite DSP Extension</span>
+                  <span class="channel-meta">1st-Party Audience Sync</span>
+                </div>
+              </div>
+
+              <div class="channel-card active" id="ch-instore" onclick="toggleChannel('instore')">
+                <div class="channel-checkbox">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="channel-text">
+                  <span class="channel-name">In-Store Screen CMS</span>
+                  <span class="channel-meta">Footfall & pDOOH Delivery</span>
+                </div>
+              </div>
+
+              <div class="channel-card active" id="ch-sofie" onclick="toggleChannel('sofie')">
+                <div class="channel-checkbox">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="channel-text">
+                  <span class="channel-name">Sofie AI Dynamic Yield</span>
+                  <span class="channel-meta">Autonomous Bid Optimizer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sim-output">
+          <div class="output-metrics-grid">
+            <div class="metric-box highlight">
+              <span class="metric-label">Estimated Ad Revenue</span>
+              <span class="metric-val" id="outRevenue">$81.0M</span>
+              <span class="metric-sub">Directional scenario potential</span>
+            </div>
+
+            <div class="metric-box">
+              <span class="metric-label">Net Profitability Lift</span>
+              <span class="metric-val" id="outMargin">+5.4%</span>
+              <span class="metric-sub">Over ~0.8% GMV baseline</span>
+            </div>
+
+            <div class="metric-box">
+              <span class="metric-label">Target Brand ROAS</span>
+              <span class="metric-val" id="outRoas">5.8x</span>
+              <span class="metric-sub">Closed-loop verified benchmark</span>
+            </div>
+          </div>
+
+          <div class="sim-methodology-box">
+            <span class="methodology-label">Core Economic Levers</span>
+            <span class="methodology-text">Catalog-synchronized inventory protection, multi-touch omnichannel attribution, and automated campaign yield optimization.</span>
+          </div>
+
+          <p class="sim-disclaimer">
+            *Illustrative scenario model. Figures represent directional benchmarks derived from typical enterprise retail media progression (0.5%–1% legacy baseline to 3%–7% best-in-class potential), not an official Osmos forecast.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: STRATEGIC POSITIONING & PERSONA SEGMENTATION -->
+  <section class="section-block" id="positioning">
+    <div class="section-head">
+      <div class="section-tag">Strategic Positioning</div>
+      <h2 class="section-heading">Positioning Osmos as the Retail Media Operating System, not another ad vendor.</h2>
+      <p class="section-lead">
+        Positioning as an infrastructure overlay that composably unlocks margin without replatforming.
+      </p>
+    </div>
+
+    <!-- BEFORE VS AFTER COPY AUDIT -->
+    <div class="diff-container">
+      <div class="diff-card before">
+        <div class="diff-badge red">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Current Industry Pitch: Feature Vendor
+        </div>
+        <p class="diff-quote">
+          "Enterprise ad server with sponsored search, display banners, and brand reporting dashboards."
+        </p>
+        <ul class="diff-list">
+          <li class="diff-item">
+            <span class="diff-icon" style="color:var(--red-accent)">&times;</span>
+            Forces multi-month bake-offs against <strong>legacy publisher ad servers</strong>.
+          </li>
+          <li class="diff-item">
+            <span class="diff-icon" style="color:var(--red-accent)">&times;</span>
+            Triggers CTO security pushback around <strong>tearing out checkout microservices</strong>.
+          </li>
+          <li class="diff-item">
+            <span class="diff-icon" style="color:var(--red-accent)">&times;</span>
+            Misses the multi-million dollar <strong>offsite and in-store opportunity</strong>.
+          </li>
+        </ul>
+      </div>
+
+      <div class="diff-card after">
+        <div class="diff-badge green">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Recommended PMM Narrative: The Composable OS
+        </div>
+        <p class="diff-quote">
+          "The Composable Retail Media OS that breaks the 1% GMV plateau in 4 weeks."
+        </p>
+        <ul class="diff-list">
+          <li class="diff-item">
+            <span class="diff-icon" style="color:var(--emerald-accent)">&check;</span>
+            Directly attacks the Chief Commercial Officer's <strong>P&L margin expansion mandate</strong>.
+          </li>
+          <li class="diff-item">
+            <span class="diff-icon" style="color:var(--emerald-accent)">&check;</span>
+            Guarantees CTOs <strong>sub-20ms latency SLAs</strong> without core replatforming.
+          </li>
+          <li class="diff-item">
+            <span class="diff-icon" style="color:var(--emerald-accent)">&check;</span>
+            Captures both <strong>endemic and non-endemic ad spend</strong> in a unified wallet.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PERSONA SWITCHER -->
+    <div class="persona-switcher-box">
+      <div class="sim-label-row" style="margin-bottom:14px;">
+        <span class="sim-label">Interactive Stakeholder Alignment Matrix</span>
+        <span class="sim-value-tag">Tailored Commercial Angles</span>
+      </div>
+
+      <div class="persona-tabs">
+        <button class="persona-tab-btn active" onclick="switchPersona('retail-lead', this)">Chief Commercial Officer / Head of Retail Media</button>
+        <button class="persona-tab-btn" onclick="switchPersona('cto-tech', this)">Chief Technology Officer / VP Engineering</button>
+        <button class="persona-tab-btn" onclick="switchPersona('brand-cpg', this)">CPG Media Director / Agency Lead</button>
+      </div>
+
+      <div class="persona-panel active" id="panel-retail-lead">
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Primary Commercial Mandate</div>
+          <div class="persona-aspect-body">Accelerate net margin from <strong>1% to 4%+</strong> without adding 20 ad-ops headcount.</div>
+        </div>
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Core Osmos Wedge</div>
+          <div class="persona-aspect-body">Automated <strong>brand self-serve workflows</strong> and automated MDF wallet reconciliation.</div>
+        </div>
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Proof Metric</div>
+          <div class="persona-aspect-body"><strong>Up to 7% GMV contribution</strong> with zero engineering maintenance overhead.</div>
+        </div>
+      </div>
+
+      <div class="persona-panel" id="panel-cto-tech">
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Primary Technical Mandate</div>
+          <div class="persona-aspect-body">Protect <strong>checkout speed and uptime</strong> without brittle monorail replatforming.</div>
+        </div>
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Core Osmos Wedge</div>
+          <div class="persona-aspect-body"><strong>Sub-20ms decision latency</strong> and headless APIs over live product catalogs.</div>
+        </div>
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Proof Metric</div>
+          <div class="persona-aspect-body"><strong>99.99% peak sales uptime</strong> across Tier 1 deployments in 11 countries.</div>
+        </div>
+      </div>
+
+      <div class="persona-panel" id="panel-brand-cpg">
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Primary Media Mandate</div>
+          <div class="persona-aspect-body">Maximize SKU sell-through with <strong>transparent incrementality and verifiable ROAS</strong>.</div>
+        </div>
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Core Osmos Wedge</div>
+          <div class="persona-aspect-body">Closed-loop <strong>in-store and online attribution</strong> with Sofie AI budget shifting.</div>
+        </div>
+        <div class="persona-aspect">
+          <div class="persona-aspect-title">Proof Metric</div>
+          <div class="persona-aspect-body"><strong>5.8x verified ROAS</strong> with real-time audience holdout test validation.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: COMPETITIVE MATRIX & BATTLECARDS -->
+  <section class="section-block" id="competition">
+    <div class="section-head">
+      <div class="section-tag">Competitive Strategy</div>
+      <h2 class="section-heading">Winning on composability, sub-20ms latency, and data sovereignty. Conceding legacy agency brokerages.</h2>
+      <p class="section-lead">
+        Why enterprise retailers choose sovereign first-party infrastructure over third-party ad networks.
+      </p>
+    </div>
+
+    <div class="matrix-container">
+      <!-- 2X2 SVG MATRIX -->
+      <div class="svg-quadrant-wrapper">
+        <svg viewBox="0 0 560 400" class="quadrant-svg">
+          <rect x="20" y="24" width="520" height="350" rx="12" fill="#0D1120" stroke="rgba(255,255,255,0.08)"/>
+          
+          <line x1="280" y1="36" x2="280" y2="360" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4"/>
+          <line x1="32" y1="195" x2="528" y2="195" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4"/>
+          
+          <text x="280" y="18" fill="#94A3B8" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" text-anchor="middle">FULL OMNICHANNEL SUITE (ONSITE + OFFSITE + IN-STORE)</text>
+          <text x="280" y="392" fill="#64748B" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" text-anchor="middle">ONSITE-ONLY PLACEMENTS</text>
+          
+          <text x="14" y="195" fill="#64748B" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" transform="rotate(-90 14,195)" text-anchor="middle">MONOLITHIC WALLED GARDEN</text>
+          <text x="546" y="195" fill="#94A3B8" font-family="'Space Grotesk', sans-serif" font-size="13" font-weight="600" transform="rotate(90 546,195)" text-anchor="middle">COMPOSABLE & MODULAR ARCHITECTURE</text>
+
+          <!-- Competitor Nodes -->
+          <circle cx="120" cy="115" r="20" fill="rgba(239, 68, 68, 0.15)" stroke="#EF4444" stroke-width="1.5"/>
+          <text x="120" y="120" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">Criteo</text>
+          <text x="120" y="146" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12.5" text-anchor="middle">Network scale</text>
+
+          <circle cx="130" cy="265" r="20" fill="rgba(245, 158, 11, 0.15)" stroke="#F59E0B" stroke-width="1.5"/>
+          <text x="130" y="270" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" text-anchor="middle">CitrusAd</text>
+          <text x="130" y="296" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12.5" text-anchor="middle">Agency ties</text>
+
+          <circle cx="420" cy="270" r="20" fill="rgba(6, 182, 212, 0.15)" stroke="#06B6D4" stroke-width="1.5"/>
+          <text x="420" y="275" fill="#F8FAFC" font-family="'Plus Jakarta Sans', sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">Kevel</text>
+          <text x="420" y="301" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="12.5" text-anchor="middle">DIY API builder</text>
+
+          <!-- OSMOS.AI -->
+          <g>
+            <circle cx="430" cy="85" r="30" fill="rgba(99, 108, 255, 0.25)" stroke="#636CFF" stroke-width="2"/>
+            <circle cx="430" cy="85" r="20" fill="#636CFF"/>
+            <text x="430" y="90" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-size="13.5" font-weight="700" text-anchor="middle">OSMOS</text>
+            <rect x="360" y="125" width="140" height="26" rx="6" fill="rgba(0, 229, 153, 0.15)" stroke="#00E599"/>
+            <text x="430" y="142" fill="#00E599" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="700" text-anchor="middle">LEADER: Omnichannel OS</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- BATTLECARDS -->
+      <div class="battlecards-col">
+        <div class="battlecard">
+          <div class="battlecard-summary">
+            <span>Differentiating from Criteo Retail Media</span>
+            <span class="badge">Data Sovereignty & Direct Brand Trust</span>
+          </div>
+          <div class="battlecard-content">
+            <div class="battle-play-row">
+              <span class="battle-tag concede">Concede:</span>
+              <span class="battle-val">Criteo dominates <strong>legacy demand pools</strong> and extensive global DSP networks.</span>
+            </div>
+            <div class="battle-play-row">
+              <span class="battle-tag reframe">Reframe:</span>
+              <span class="battle-val">Retailers need <strong>private-label infrastructure</strong> to retain 100% first-party shopper data sovereignty.</span>
+            </div>
+            <div class="battle-play-row">
+              <span class="battle-tag proof">Proof:</span>
+              <span class="battle-val">Osmos delivers <strong>white-labeled direct billing</strong> and self-serve consoles without third-party data leakage.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="battlecard">
+          <div class="battlecard-summary">
+            <span>Differentiating from Kevel</span>
+            <span class="badge">Turnkey Operating System vs. Raw APIs</span>
+          </div>
+          <div class="battlecard-content">
+            <div class="battle-play-row">
+              <span class="battle-tag concede">Concede:</span>
+              <span class="battle-val">Kevel offers <strong>flexible API primitives</strong> for custom ad-server engineering.</span>
+            </div>
+            <div class="battle-play-row">
+              <span class="battle-tag reframe">Reframe:</span>
+              <span class="battle-val">Raw APIs require <strong>12+ months dev time</strong> to build brand UI, reporting, and billing.</span>
+            </div>
+            <div class="battle-play-row">
+              <span class="battle-tag proof">Proof:</span>
+              <span class="battle-val">Osmos deploys <strong>turnkey self-serve portals</strong>, billing, and Sofie AI yield automation in <strong>4 weeks</strong>.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="battlecard">
+          <div class="battlecard-summary">
+            <span>Differentiating from CitrusAd (Publicis)</span>
+            <span class="badge">Platform Neutrality & Engineering Independence</span>
+          </div>
+          <div class="battlecard-content">
+            <div class="battle-play-row">
+              <span class="battle-tag concede">Concede:</span>
+              <span class="battle-val">CitrusAd brings <strong>captive agency spend</strong> via Publicis Groupe holding ties.</span>
+            </div>
+            <div class="battle-play-row">
+              <span class="battle-tag reframe">Reframe:</span>
+              <span class="battle-val">Retailers avoid <strong>agency-biased black boxes</strong> that favor specific holding groups.</span>
+            </div>
+            <div class="battle-play-row">
+              <span class="battle-tag proof">Proof:</span>
+              <span class="battle-val">Osmos provides <strong>neutral adtech infrastructure</strong> with <strong>sub-20ms SLAs</strong> across all agency partners.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: CUSTOMER VALIDATION INQUIRIES -->
+  <section class="section-block" id="validation">
+    <div class="section-head">
+      <div class="section-tag">PMM Research Rigor</div>
+      <h2 class="section-heading">What I'd validate with retail leaders before locking this positioning.</h2>
+      <p class="section-lead">
+        Five customer inquiries to pressure-test before locking enterprise sales collateral.
+      </p>
+    </div>
+
+    <div class="validation-grid">
+      <div class="validation-card">
+        <div class="validation-num">01</div>
+        <h3 class="validation-title">Margin vs. Ad-Ops Drag</h3>
+        <p class="validation-question">
+          Do retail CFOs prioritize <strong>gross margin expansion</strong> or eliminating <strong>ad-ops headcount overhead</strong>?
+        </p>
+        <span class="validation-action-pill">Field Test: Shadow 10 CFO discovery calls</span>
+      </div>
+
+      <div class="validation-card">
+        <div class="validation-num">02</div>
+        <h3 class="validation-title">Vertical Plateau Benchmarks</h3>
+        <p class="validation-question">
+          Does the <strong>~1% GMV ceiling</strong> resonate equally across <strong>grocery, pharmacy, and fashion</strong>?
+        </p>
+        <span class="validation-action-pill">Field Test: Segment win/loss by retail category</span>
+      </div>
+
+      <div class="validation-card">
+        <div class="validation-num">03</div>
+        <h3 class="validation-title">Composability Value Driver</h3>
+        <p class="validation-question">
+          Is <strong>modular architecture</strong> a commercial revenue accelerator or solely a <strong>CTO risk mitigant</strong>?
+        </p>
+        <span class="validation-action-pill">Field Test: A/B test pitch deck positioning</span>
+      </div>
+
+      <div class="validation-card">
+        <div class="validation-num">04</div>
+        <h3 class="validation-title">High-Velocity Entry Door</h3>
+        <p class="validation-question">
+          Does <strong>sponsored search</strong> or <strong>in-store screen CMS</strong> produce the fastest procurement cycle?
+        </p>
+        <span class="validation-action-pill">Field Test: Analyze initial contract ARR across wins</span>
+      </div>
+
+      <div class="validation-card full-width">
+        <div class="validation-num">05</div>
+        <h3 class="validation-title">Operating System Framing</h3>
+        <p class="validation-question">
+          Does <strong>Retail Media OS</strong> create clearer differentiation than <strong>unified platform</strong> without procurement friction?
+        </p>
+        <span class="validation-action-pill">Field Test: Interview 8 advisory council leaders</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: GTM ROADSHOW & CONTENT COLLATERAL -->
+  <section class="section-block" id="gtm">
+    <div class="section-head">
+      <div class="section-tag">GTM Execution</div>
+      <h2 class="section-heading">A targeted enterprise roadshow program compressing Tier 1 sales cycles from 9 months to 90 days.</h2>
+      <p class="section-lead">
+        High-touch executive roadshows and interactive tools to compress enterprise sales cycles.
+      </p>
+    </div>
+
+    <div class="gtm-grid">
+      <div class="gtm-card">
+        <span class="gtm-step-tag">Executive Forum</span>
+        <h3 class="gtm-card-title">The 7% Margin Forum</h3>
+        <p class="gtm-card-desc">
+          Host private roundtables in <strong>London, New York, and Mumbai</strong> for retail <strong>Chief Digital Officers</strong>.
+        </p>
+        <span class="gtm-impact-pill">PMM Asset: 2026 Omnichannel Benchmark Report</span>
+      </div>
+
+      <div class="gtm-card">
+        <span class="gtm-step-tag">Webinar Engine</span>
+        <h3 class="gtm-card-title">Plateau Masterclass</h3>
+        <p class="gtm-card-desc">
+          Broadcast monthly live demonstrations of <strong>sub-20ms auctions</strong> and <strong>Sofie AI yield rebalancing</strong>.
+        </p>
+        <span class="gtm-impact-pill">PMM Asset: Interactive GMV Yield Calculator</span>
+      </div>
+
+      <div class="gtm-card">
+        <span class="gtm-step-tag">Partner Channel</span>
+        <h3 class="gtm-card-title">Agency Holding Certification</h3>
+        <p class="gtm-card-desc">
+          Certify <strong>WPP, Publicis, and Omnicom</strong> media planners on unified <strong>MDF wallet allocation</strong>.
+        </p>
+        <span class="gtm-impact-pill">PMM Asset: CPG Guaranteed ROAS Playbook</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: MY FIRST 90 DAYS -->
+  <section class="section-block" id="plan">
+    <div class="section-head">
+      <div class="section-tag">Senior PMM Execution</div>
+      <h2 class="section-heading">My First 90 Days: Hypothesis &rarr; Validation &rarr; Execution.</h2>
+      <p class="section-lead">
+        Structured roadmap to validate hypotheses, arm field teams, and scale pipeline.
+      </p>
+    </div>
+
+    <div class="timeline-grid">
+      <div class="timeline-col">
+        <span class="timeline-badge">Days 1 - 30</span>
+        <h3 class="timeline-phase">Diagnose & Validate</h3>
+        <ul class="timeline-tasks">
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Shadow 15 enterprise sales calls to isolate <strong>core buyer friction</strong>.
+          </li>
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Conduct discovery interviews with retail leaders to test <strong>value positioning</strong>.
+          </li>
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Publish competitive battlecards directly from recorded <strong>customer objections</strong>.
+          </li>
+        </ul>
+      </div>
+
+      <div class="timeline-col">
+        <span class="timeline-badge">Days 31 - 60</span>
+        <h3 class="timeline-phase">Equip & Pilot</h3>
+        <ul class="timeline-tasks">
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Pilot refined positioning in live deals and track <strong>win velocity</strong>.
+          </li>
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Produce two flagship <strong>retail teardown case studies</strong> with Tier 1 partners.
+          </li>
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Deploy the <strong>Retail Media Margin Calculator</strong> to qualify high-intent prospects.
+          </li>
+        </ul>
+      </div>
+
+      <div class="timeline-col">
+        <span class="timeline-badge">Days 61 - 90</span>
+        <h3 class="timeline-phase">Scale & Institutionalize</h3>
+        <ul class="timeline-tasks">
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Package positioning into <strong>sales playbooks</strong> and agency certification toolkits.
+          </li>
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Formalize a <strong>Tier 1 Retail Advisory Council</strong> across EMEA and APAC.
+          </li>
+          <li class="task-item">
+            <span class="task-bullet">&rarr;</span>
+            Establish an ongoing <strong>win/loss intelligence loop</strong> feeding product engineering.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- METRICS TABLE -->
+    <div class="metrics-table-box">
+      <div class="table-header">Proposed Product Marketing Impact Targets to Establish</div>
+      <div class="metrics-grid-rows">
+        <div class="kpi-cell">
+          <span class="kpi-title">Cycle Velocity</span>
+          <span class="kpi-target">-30%</span>
+          <span class="kpi-desc">Faster enterprise evaluation to signature.</span>
+        </div>
+        <div class="kpi-cell">
+          <span class="kpi-title">Win Rate</span>
+          <span class="kpi-target">+40%</span>
+          <span class="kpi-desc">Head-to-head win rate against legacy networks.</span>
+        </div>
+        <div class="kpi-cell">
+          <span class="kpi-title">Field Adoption</span>
+          <span class="kpi-target">85%+</span>
+          <span class="kpi-desc">Rep usage of battlecards and calculators.</span>
+        </div>
+        <div class="kpi-cell">
+          <span class="kpi-title">Sourced Pipeline</span>
+          <span class="kpi-target">$12M+</span>
+          <span class="kpi-desc">Enterprise pipeline influenced by roadshows.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: OTHER RELEVANT WORK -->
+  <section class="section-block" id="work">
+    <div class="section-head">
+      <div class="section-tag">Portfolio & Craft</div>
+      <h2 class="section-heading">Selected Strategic Proofs of Work</h2>
+      <p class="section-lead">
+        Recent examples demonstrating strategic market analysis, product positioning, and high-impact GTM execution.
+      </p>
+    </div>
+
+    <div class="past-works-grid">
+      <div class="past-work-card">
+        <div class="past-work-header">
+          <span class="past-company">DevRev</span>
+          <span class="past-domain">Developer & Customer AI</span>
+        </div>
+        <p class="past-problem">
+          Positioned an AI platform unifying <strong>developer sprints</strong> with <strong>real-time customer churn signals</strong>.
+        </p>
+        <a href="https://bhanuexcalibur.github.io/DevRev/" target="_blank" rel="noopener" class="past-link">
+          View Strategic PoW &rarr;
+        </a>
+      </div>
+
+      <div class="past-work-card">
+        <div class="past-work-header">
+          <span class="past-company">Aptura</span>
+          <span class="past-domain">Marketing AI & Evaluation</span>
+        </div>
+        <p class="past-problem">
+          Created an enterprise evaluation framework for <strong>generative marketing AI</strong> across <strong>multi-channel campaigns</strong>.
+        </p>
+        <a href="https://bhanuexcalibur.github.io/Aptura/" target="_blank" rel="noopener" class="past-link">
+          View Strategic PoW &rarr;
+        </a>
+      </div>
+
+      <div class="past-work-card">
+        <div class="past-work-header">
+          <span class="past-company">Primer</span>
+          <span class="past-domain">Defense & Intelligence AI</span>
+        </div>
+        <p class="past-problem">
+          Engineered GTM positioning for <strong>high-assurance AI</strong> in <strong>defense and national security operations</strong>.
+        </p>
+        <a href="https://bhanuexcalibur.github.io/Primer/" target="_blank" rel="noopener" class="past-link">
+          View Strategic PoW &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER CONTACT BAR -->
+<footer>
+  <div class="footer-content">
+    <div class="author-block">
+      <div class="author-name">Bhanu Kumar</div>
+      <div class="author-role">Product Marketing Leader &middot; Enterprise SaaS &middot; AdTech & Retail Media</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/bhanuexcalibur/" target="_blank" rel="noopener" class="pill-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://drive.google.com/file/d/1a_WRIHF7RawD7rXkwYs3DNuPQf7zq_lf/view?usp=sharing" target="_blank" rel="noopener" class="pill-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Resume
+      </a>
+      <a href="mailto:bhanukumar0902@gmail.com" class="pill-btn primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        bhanukumar0902@gmail.com
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// TOP SCROLL PROGRESS
+window.addEventListener('scroll', () => {
+  const winScroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  const el = document.getElementById('scrollProgress');
+  if (el) el.style.width = scrolled + '%';
+}, { passive: true });
+
+// HERO SIMULATOR LOGIC
+let currentGmv = 1500;
+let activeChannels = {
+  onsite: true,
+  offsite: true,
+  instore: true,
+  sofie: true
+};
+
+const channelContributions = {
+  onsite: { marginPct: 1.5, roasAdd: 1.2 },
+  offsite: { marginPct: 1.4, roasAdd: 1.4 },
+  instore: { marginPct: 1.2, roasAdd: 0.9 },
+  sofie: { marginPct: 1.3, roasAdd: 1.5 }
+};
+
+function calculateMetrics() {
+  let totalMarginPct = 0.0;
+  let totalRoas = 0.8;
+  let count = 0;
+
+  for (const [ch, isActive] of Object.entries(activeChannels)) {
+    if (isActive) {
+      totalMarginPct += channelContributions[ch].marginPct;
+      totalRoas += channelContributions[ch].roasAdd;
+      count++;
+    }
+  }
+
+  if (count > 0) {
+    totalMarginPct = Math.min(totalMarginPct, 7.0);
+  }
+
+  const revenueNum = (currentGmv * (totalMarginPct / 100)).toFixed(1);
+
+  const elRev = document.getElementById('outRevenue');
+  if (elRev) elRev.textContent = '$' + revenueNum + 'M';
+
+  const elMargin = document.getElementById('outMargin');
+  if (elMargin) elMargin.textContent = '+' + totalMarginPct.toFixed(1) + '%';
+
+  const elRoas = document.getElementById('outRoas');
+  if (elRoas) elRoas.textContent = totalRoas.toFixed(1) + 'x';
+
+  const elCount = document.getElementById('channelCount');
+  if (elCount) elCount.textContent = count + ' Active';
+
+  const latency = (17 + Math.random() * 2).toFixed(1);
+  const elLatency = document.getElementById('outLatency');
+  if (elLatency) elLatency.textContent = latency + ' ms';
+}
+
+function setGmv(val, btn) {
+  currentGmv = val;
+  document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  const gmvLabels = {
+    500: '$500 Million Annual GMV',
+    1500: '$1.5 Billion Annual GMV',
+    5000: '$5.0 Billion Annual GMV'
+  };
+  const elTag = document.getElementById('gmvTag');
+  if (elTag) elTag.textContent = gmvLabels[val];
+  calculateMetrics();
+}
+
+function toggleChannel(ch) {
+  activeChannels[ch] = !activeChannels[ch];
+  const card = document.getElementById('ch-' + ch);
+  if (card) {
+    if (activeChannels[ch]) {
+      card.classList.add('active');
+    } else {
+      card.classList.remove('active');
+    }
+  }
+  calculateMetrics();
+}
+
+// PERSONA SWITCHER
+function switchPersona(personaKey, btn) {
+  document.querySelectorAll('.persona-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.persona-panel').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('panel-' + personaKey);
+  if (target) {
+    target.classList.add('active');
+  }
+}
+
+// SCROLL-TRIGGERED INTERACTIVE DEMO (ONLY RUNS WHEN SECTION ENTERS VIEWPORT)
+let simDemoHasRun = false;
+let simDemoTimer1 = null;
+let simDemoTimer2 = null;
+let simDemoTimer3 = null;
+
+function stopSimulatorDemo() {
+  if (simDemoTimer1) clearTimeout(simDemoTimer1);
+  if (simDemoTimer2) clearTimeout(simDemoTimer2);
+  if (simDemoTimer3) clearTimeout(simDemoTimer3);
+  document.querySelectorAll('.sim-focus-pulse').forEach(el => el.classList.remove('sim-focus-pulse'));
+}
+
+function runSimulatorDemo(isManual) {
+  stopSimulatorDemo();
+  const instr = document.getElementById('demoInstruction');
+  const btn1500 = document.querySelector('.tier-btn[data-gmv="1500"]');
+  const btn5000 = document.querySelector('.tier-btn[data-gmv="5000"]');
+  const chSofie = document.getElementById('ch-sofie');
+
+  if (instr) {
+    instr.innerHTML = '<strong>Live Demo:</strong> Simulating margin impact of high-yield AI autonomous bidding...';
+  }
+
+  // Step 1: Pulse AI channel and toggle
+  if (chSofie) chSofie.classList.add('sim-focus-pulse');
+  toggleChannel('sofie');
+
+  simDemoTimer1 = setTimeout(() => {
+    // Step 2: Re-activate AI channel and highlight GMV scale transition
+    toggleChannel('sofie');
+    if (chSofie) chSofie.classList.remove('sim-focus-pulse');
+
+    if (btn5000) {
+      btn5000.classList.add('sim-focus-pulse');
+      setGmv(5000, btn5000);
+    }
+    if (instr) {
+      instr.innerHTML = '<strong>Live Demo:</strong> Scaling to Global Retailer ($5.0B GMV) &middot; Revenue expands to $270M+...';
+    }
+
+    simDemoTimer2 = setTimeout(() => {
+      if (btn5000) btn5000.classList.remove('sim-focus-pulse');
+      if (btn1500) {
+        setGmv(1500, btn1500);
+      }
+      if (instr) {
+        instr.innerHTML = '<strong>Interactive Mode:</strong> Click any GMV tier or channel toggle to model custom P&L scenarios.';
+      }
+    }, 1600);
+  }, 1200);
+}
+
+// User interaction cancels automated demo sequence
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.tier-btn') || e.target.closest('.channel-card')) {
+    if (!e.target.closest('#demoReplayBtn')) {
+      stopSimulatorDemo();
+      const instr = document.getElementById('demoInstruction');
+      if (instr) {
+        instr.innerHTML = '<strong>Interactive Mode:</strong> Custom scenario active. Click any tier or channel to adjust.';
+      }
+    }
+  }
+});
+
+// INTERSECTION OBSERVER: ONLY TRIGGER WHEN USER REACHES SIMULATOR SECTION
+function initSimulatorObserver() {
+  const simSection = document.getElementById('simulator');
+  if (!simSection) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !simDemoHasRun) {
+          simDemoHasRun = true;
+          observer.unobserve(simSection);
+          // Wait 500ms after scrolling into view before beginning smooth demo
+          setTimeout(() => {
+            runSimulatorDemo(false);
+          }, 500);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    observer.observe(simSection);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  calculateMetrics();
+  initSimulatorObserver();
+});
+</script>
+
+</body>
+</html>
